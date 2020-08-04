@@ -5,6 +5,7 @@ namespace craft\feedme\fields;
 use Cake\Utility\Hash;
 use Craft;
 use craft\commerce\elements\Product as ProductElement;
+use craft\commerce\records\ProductType as ProductTypeRecord;
 use craft\feedme\base\Field;
 use craft\feedme\base\FieldInterface;
 use craft\feedme\Plugin;
@@ -49,6 +50,10 @@ class CommerceProducts extends Field implements FieldInterface
                 list(, $uid) = explode(':', $source);
                 $typeIds[] = $uid;
             }
+            
+            $typeIds = array_column(ProductTypeRecord::findAll([
+                'uid' => $typeIds
+            ]), 'id');
         } else if ($sources === '*') {
             $typeIds = null;
         }
