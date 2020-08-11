@@ -151,6 +151,13 @@ class Assets extends Field implements FieldInterface
 
                 Plugin::info('Skipping asset upload (already exists).');
             }
+            
+            // Did we select 'Keep both'? If yes, discard the already found elements.
+            if ($upload && $ids && $conflict === AssetElement::SCENARIO_CREATE) {
+                $foundElements = [];
+
+                Plugin::info('Skipping asset upload (keeping both).');
+            }
         }
 
         if ($upload) {
