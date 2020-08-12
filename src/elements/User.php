@@ -235,7 +235,13 @@ class User extends Element
         return null;
     }
 
+    protected function parseDateCreated($feedData, $fieldInfo)
+    {
+        $value = $this->fetchSimpleValue($feedData, $fieldInfo);
+        $formatting = Hash::get($fieldInfo, 'options.match');
 
+        return $this->parseDateAttribute($value, $formatting);
+    }
 
     // Private Methods
     // =========================================================================

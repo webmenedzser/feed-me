@@ -64,6 +64,14 @@
         ],
     },
 }, {
+    type: 'date',
+    name: 'Registration Date',
+    handle: 'dateCreated',
+    instructions: 'Accepts Unix timestamp, or just about any English textual datetime description.' | t('feed-me'),
+    default: {
+    type: 'dateTime',
+    },
+}, {
     name: 'User ID',
     handle: 'id',
     instructions: '<strong class="error">Warning: </strong>This should only be used for an existing Craft User ID.' | t('feed-me'),
